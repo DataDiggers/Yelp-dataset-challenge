@@ -1,0 +1,42 @@
+/* 
+    Created on : Jul 18, 2016, 5:46:39 PM
+    Author     : Priyanka Bolisetty
+*/
+
+#map{
+    width: 900px;
+    height: 500px;
+    float: right;
+}
+
+#filters{
+    float: left;
+    width: 150px;
+    height: 500px;
+    font-size: 20px;
+    margin-left: 15px;
+}
+
+#btnRecommend{
+    margin-left: 25px;
+    background-color: lightslategray;
+    border: antiquewhite;
+    color: white;
+    padding: 10px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+th, td {
+   border: 1px solid grey;
+   padding: 3px;
+   text-align: left;
+}
+
+table{
+    clear: both;
+    top: 20px;
+}
