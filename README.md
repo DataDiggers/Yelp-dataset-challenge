@@ -8,4 +8,4 @@ which are trending in a selected location for a selected season).
   2. Season
 
 **Future enhancements:**
-    Add category filter which allows user to drill-down further based on a category.
+    Add category filter which allows user to further drill-down based on a category.
