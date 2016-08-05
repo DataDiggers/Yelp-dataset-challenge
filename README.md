@@ -3,7 +3,7 @@
 **Data Analysis**
 
 Analyzed Seasonal Trends on Amazon EMR cluster using Pig, Hive and Spark queries
-All the input and output files are stored in Amazon S3
+All the input and output files are stored in Amazon S3 Bucket
 
 **Data Visualization**
 
