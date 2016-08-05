@@ -20,11 +20,9 @@
       die ('Can\'t use db : ' . mysql_error());
     }
 
-    // Select all the rows in the markers table
-    $query = "SELECT * FROM businessReviews where state='".$state."' AND season='".$season."'";
-    
-    //$query = "SELECT * FROM businessReviews where state= 'PA' LIMIT 10";
-    
+    // Select all the rows from table satisfying the given condition
+    $query = "SELECT * FROM businessReviews where state='".$state."' AND season='".$season."' LIMIT 100";
+   
     $result = mysql_query($query);
     if (!$result) {
       die('Invalid query: ' . mysql_error());
@@ -42,6 +40,10 @@
       $newnode->setAttribute("longitude", $row['longitude']);
       $newnode->setAttribute("fulladdress", $row['full_address']);
       $newnode->setAttribute("state", $row['state']);
+      $newnode->setAttribute("city", $row['city']);
+      $newnode->setAttribute("stars", $row['review_stars']);
+      $newnode->setAttribute("reviewCount", $row['review_count']);
+      //Add new node for Category
     }
 
     echo $dom->saveXML();

@@ -3,15 +3,20 @@
     Author     : Priyanka Bolisetty
 */
 
+body{
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+}
+
 #map{
-    width: 900px;
-    height: 500px;
+    top: 10px;
+    width: 850px;
+    height: 450px;
     float: right;
 }
 
 #filters{
     float: left;
-    width: 150px;
+    width: 225px;
     height: 500px;
     font-size: 20px;
     margin-left: 15px;
@@ -30,13 +35,48 @@
     font-weight: bold;
 }
 
-th, td {
-   border: 1px solid grey;
-   padding: 3px;
-   text-align: left;
+#tableData {
+    border-collapse: collapse;
+    margin-left: 60px;
+    display: none;
+    border-radius: 5px;
+    float: left;
 }
 
-table{
-    clear: both;
-    top: 20px;
+td, th {
+    border: 1px solid #ddd;
+    padding: 8px;
+    border-radius: 5px;
+}
+
+tr:hover {background-color: #F5F5DC;}
+
+th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #4CAF50;
+    color: white;
+    padding: 8px;
+}
+
+#stars, #reviews{
+    text-align: right;
+}
+
+.rating-box {
+    background: url("bkg_rating.png") repeat-x;
+    font-size: 0;
+    height: 13px;
+    line-height: 0;
+    overflow: hidden;
+    text-indent: -999em;
+    width: 70px;
+}
+
+.rating-box .rating {
+    background: url("bkg_rating.png") repeat-x;
+    background-position: 0 100%;
+    float: left;
+    height: 13px;
 }
