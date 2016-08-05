@@ -1,10 +1,12 @@
 # Yelp-dataset-challenge
 
 **Data Analysis**
+
 Analyzed Seasonal Trends on Amazon EMR cluster using Pig, Hive and Spark queries
 All the input and output files are stored in Amazon S3
 
 **Data Visualization**
+
   1. Apache Zeppelin which runs on EMR cluster
   2. Tableau connected to EMR cluster
 
