@@ -36,7 +36,7 @@ function downloadUrl(url, callback) {
     };
 
     request.open("GET", "generate-xml.php?drpdwnStateVal=" + getState() +
-            "&drpdwnSeasonVal=" + getSeason() + "&drpdwnCategoryVal=" + getCategory(), true);
+            "&drpdwnSeasonVal=" + getSeason(), true);
     request.send(null);
 }
 
@@ -117,7 +117,8 @@ function getRecommendations() {
             getXmlMarkers(xmlhttp)
         }
     }
-    xmlhttp.open("GET", "generate-xml.php?drpdwnStateVal=" + getState() + "&drpdwnSeasonVal=" + getSeason(), true);
+    xmlhttp.open("GET", "generate-xml.php?drpdwnStateVal=" + getState() + 
+            "&drpdwnSeasonVal=" + getSeason() + "&drpdwnCategoryVal=" + getCategory(), true);
     xmlhttp.send();
 }
 
@@ -126,8 +127,6 @@ function applyRating(marker) {
     var starVal = (starRating * 20) / 100;
     return (starVal * 100) + "%";
 }
-
-
 
 
 

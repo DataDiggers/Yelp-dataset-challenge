@@ -29,21 +29,7 @@
                 ON bc.business_id = br.business_id 
                 WHERE bc.state='".$state."' AND season='".$season."' 
                 AND bc.categories LIKE '%".$category."%' LIMIT 100";
-
-                //WHERE b_categories.categories LIKE '%{$category}%' AND
-                //b_seasons.state='".$state."' AND season='".$season."' LIMIT 100";
-
-                
-                //b_categories.state='".$state."' AND season='".$season."' AND
-                //b_categories.categories LIKE '%$category%' LIMIT 100";
-
-    
-    
-                //b_categories.categories LIKE '%".$category."%' LIMIT 100";
  
-    
-   //b_seasons.state='ON' AND season='Spring' AND b_categories.categories LIKE '%Food%' LIMIT 100";
-    
     $result = mysql_query($query);
     if (!$result) {
       die('Invalid query: ' . mysql_error());

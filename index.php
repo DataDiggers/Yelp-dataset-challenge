@@ -79,6 +79,7 @@
                 echo "<option value=Automotive>Automotive</option>";
 
                 echo "</select><br><br>"; // Closing of list box
+                
                 // Select all the rows in the markers table
                 $query = "SELECT * FROM businessReviews where city='Phoenix' limit 5";
                 $result = mysql_query($query);
@@ -103,7 +104,6 @@
                     <tr>
                         <td id="businessName"></td>
                         <td id="city"></td>
-                        <td id="category"></td>
                         <td id="reviews"></td>
                         <td id="starsDiv">
                             <div class="rating-box">
