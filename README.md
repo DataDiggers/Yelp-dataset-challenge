@@ -18,8 +18,8 @@ which are trending in a selected location for a selected season).
 **Filters**:
   1. Location
   2. Season
+  3. Category - Done with adding category filter which allows user to further drill-down based on a category
 
 **Future enhancements:**
   1. Deploying the web application on AWS
-  2. Add category filter which allows user to further drill-down based on a category
 
