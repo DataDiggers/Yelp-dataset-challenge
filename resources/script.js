@@ -1,5 +1,5 @@
 
-var stateVal, seasonVal, map, infoWindow, starRating;
+var stateVal, seasonVal, categoryVal, map, infoWindow, starRating;
 
 var customIcons = {
     AZ: {
@@ -21,35 +21,56 @@ function load() {
 
     // Change this depending on the name of your PHP file
     downloadUrl("generate-xml.php", function (data) {
-        var xml = data.responseXML;
-        var markers = xml.documentElement.getElementsByTagName("marker");
-        for (var i = 0; i < markers.length; i++) {
-            var name = markers[i].getAttribute("name");
-            var point = new google.maps.LatLng(
-                    parseFloat(markers[i].getAttribute("latitude")),
-                    parseFloat(markers[i].getAttribute("longitude")));
-
-            var address = markers[i].getAttribute("fulladdress");
-            var state = markers[i].getAttribute("state");
-            var city = markers[i].getAttribute("city");
-            var stars = markers[i].getAttribute("stars");
-            var reviews = markers[i].getAttribute("reviewCount");
-
-            starRating = stars;
-            var html = "<b>" + name + "</b> <br/>" + address;
-            var icon = customIcons[state] || {};
-            var marker = new google.maps.Marker({
-                map: map,
-                position: point,
-                icon: icon.icon,
-                business_name: name,
-                city: city,
-                stars: stars,
-                reviewCount: reviews
-            });
-            bindInfoWindow(marker, map, infoWindow, html);
-        }
+        getXmlMarkers(data);
     });
+}
+
+function downloadUrl(url, callback) {
+    var request = new XMLHttpRequest();
+
+    request.onreadystatechange = function () {
+        if (request.readyState == 4) {
+            request.onreadystatechange = doNothing;
+            callback(request, request.status);
+        }
+    };
+
+    request.open("GET", "generate-xml.php?drpdwnStateVal=" + getState() +
+            "&drpdwnSeasonVal=" + getSeason() + "&drpdwnCategoryVal=" + getCategory(), true);
+    request.send(null);
+}
+
+function getXmlMarkers(xmlhttp) {
+    var xml = xmlhttp.responseXML;
+    var markers = xml.documentElement.getElementsByTagName("marker");
+    for (var i = 0; i < markers.length; i++) {
+        var name = markers[i].getAttribute("name");
+        var point = new google.maps.LatLng(
+                parseFloat(markers[i].getAttribute("latitude")),
+                parseFloat(markers[i].getAttribute("longitude")));
+
+        var address = markers[i].getAttribute("fulladdress");
+        var state = markers[i].getAttribute("state");
+        var city = markers[i].getAttribute("city");
+        var stars = markers[i].getAttribute("stars");
+        var reviews = markers[i].getAttribute("reviewCount");
+        var category = markers[i].getAttribute("category");
+
+        var html = "<b>" + name + "</b> <br/>" + address;
+        var icon = customIcons[state] || {};
+        var marker = new google.maps.Marker({
+            map: map,
+            position: point,
+            icon: icon.icon,
+            business_name: name,
+            city: city,
+            stars: stars,
+            reviewCount: reviews,
+            category: category
+
+        });
+        bindInfoWindow(marker, map, infoWindow, html);
+    }
 }
 
 function bindInfoWindow(marker, map, infoWindow, html) {
@@ -65,21 +86,8 @@ function bindInfoWindow(marker, map, infoWindow, html) {
         document.getElementById("city").innerHTML = marker.city;
         document.getElementById("star_rating").style.width = applyRating(marker);
         document.getElementById("reviews").innerHTML = marker.reviewCount;
+        document.getElementById("category").innerHTML = marker.category;
     });
-}
-
-function downloadUrl(url, callback) {
-    var request = new XMLHttpRequest();
-
-    request.onreadystatechange = function () {
-        if (request.readyState == 4) {
-            request.onreadystatechange = doNothing;
-            callback(request, request.status);
-        }
-    };
-
-    request.open("GET", "generate-xml.php?drpdwnStateVal=" + getState() + "&drpdwnSeasonVal=" + getSeason(), true);
-    request.send(null);
 }
 
 function getState() {
@@ -88,6 +96,10 @@ function getState() {
 
 function getSeason() {
     return seasonVal = document.getElementById('seasonValues').value;
+}
+
+function getCategory() {
+    return categoryVal = document.getElementById('categoryValues').value;
 }
 
 function doNothing() {}
@@ -102,34 +114,7 @@ function getRecommendations() {
 
     xmlhttp.onreadystatechange = function () {
         if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-            var xml = xmlhttp.responseXML;
-            var markers = xml.documentElement.getElementsByTagName("marker");
-            for (var i = 0; i < markers.length; i++) {
-                var name = markers[i].getAttribute("name");
-                var point = new google.maps.LatLng(
-                        parseFloat(markers[i].getAttribute("latitude")),
-                        parseFloat(markers[i].getAttribute("longitude")));
-
-                var address = markers[i].getAttribute("fulladdress");
-                var state = markers[i].getAttribute("state");
-                var city = markers[i].getAttribute("city");
-                var stars = markers[i].getAttribute("stars");
-                var reviews = markers[i].getAttribute("reviewCount");
-
-                var html = "<b>" + name + "</b> <br/>" + address;
-                var icon = customIcons[state] || {};
-                var marker = new google.maps.Marker({
-                    map: map,
-                    position: point,
-                    icon: icon.icon,
-                    business_name: name,
-                    city: city,
-                    stars: stars,
-                    reviewCount: reviews
-
-                });
-                bindInfoWindow(marker, map, infoWindow, html);
-            }
+            getXmlMarkers(xmlhttp)
         }
     }
     xmlhttp.open("GET", "generate-xml.php?drpdwnStateVal=" + getState() + "&drpdwnSeasonVal=" + getSeason(), true);

@@ -27,7 +27,6 @@
                 mysql_select_db($database)
                         or die('Can\'t use db : ' . mysql_error());
 
-
                 echo "<h4>Seasonal Trends </h4>"; // Header
                 //Select all distinct states in the businessReviews table
                 $result_states = mysql_query($stateQuery);
@@ -56,10 +55,9 @@
                 while ($row = mysql_fetch_row($result_seasons)) {//Array or records stored in $row
                     echo "<option value=$row[0]>$row[0]</option>";
                 }
-                echo "</select>"; // Closing of list box
+                echo "</select><br><br>"; // Closing of list box
 
-
-                echo "<br><br><label>Category: </label><select id=categoryValues "
+                echo "<label>Category: </label><select id=categoryValues "
                 . "name=drpdwnCategoryVal onchange=getCategory()>"; // list box select command
 
                 echo "<option value=Select>Select</option>";
@@ -87,6 +85,7 @@
                 if (!$result) {
                     die('Invalid query: ' . mysql_error());
                 }
+                
                 ?>
 
                 <input type="button" name="recommend" value="Recommend" id="btnRecommend" 
@@ -104,6 +103,7 @@
                     <tr>
                         <td id="businessName"></td>
                         <td id="city"></td>
+                        <td id="category"></td>
                         <td id="reviews"></td>
                         <td id="starsDiv">
                             <div class="rating-box">

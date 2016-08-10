@@ -1,7 +1,7 @@
 <?php
     $username = "root";
-    $password = "*****";
-    $database = "dataset_yelp";
+    $password = "M@sters15intern";
+    $database = "yelp-dataset";
     $localhost = "127.0.0.1";
     
     $stateQuery = "SELECT DISTINCT state FROM businessReviews WHERE state LIKE '__'";
