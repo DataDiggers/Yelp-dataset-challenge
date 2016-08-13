@@ -1,15 +1,6 @@
 
-var stateVal, seasonVal, categoryVal, map, infoWindow, starRating;
-
-var customIcons = {
-    AZ: {
-        icon: 'http://labs.google.com/ridefinder/images/mm_20_red.png'
-    }
-    /*,
-     PA: {
-     icon: 'http://labs.google.com/ridefinder/images/mm_20_blue.png'
-     }*/
-};
+var stateVal, seasonVal, categoryVal, starRating;
+var map, markers = [], infoWindow;
 
 function load() {
     map = new google.maps.Map(document.getElementById("map"), {
@@ -42,7 +33,7 @@ function downloadUrl(url, callback) {
 
 function getXmlMarkers(xmlhttp) {
     var xml = xmlhttp.responseXML;
-    var markers = xml.documentElement.getElementsByTagName("marker");
+    markers = xml.documentElement.getElementsByTagName("marker");
     for (var i = 0; i < markers.length; i++) {
         var name = markers[i].getAttribute("name");
         var point = new google.maps.LatLng(
@@ -57,7 +48,7 @@ function getXmlMarkers(xmlhttp) {
         var category = markers[i].getAttribute("category");
 
         var html = "<b>" + name + "</b> <br/>" + address;
-        var icon = customIcons[state] || {};
+        var icon = {};
         var marker = new google.maps.Marker({
             map: map,
             position: point,
@@ -73,6 +64,37 @@ function getXmlMarkers(xmlhttp) {
     }
 }
 
+// Adds a marker to the map and push to the array.
+function addMarker(location) {
+    var marker = new google.maps.Marker({
+        position: location,
+        map: map
+    });
+    markers.push(marker);
+}
+
+// Removes the markers from the map, but keeps them in the array.
+function clearMarkers() {
+    setMapOnAll(null);
+}
+
+// Sets the map on all markers in the array.
+function setMapOnAll(map) {
+    for (var i = 0; i < markers.length; i++) {
+        markers[i].setMap(map);
+    }
+}
+
+// Shows any markers currently in the array.
+function showMarkers() {
+    setMapOnAll(map);
+}
+
+function deleteMarkers() {
+    clearMarkers();
+    markers = [];
+}
+
 function bindInfoWindow(marker, map, infoWindow, html) {
     infoWindow.setContent(html);
     infoWindow.open(map, marker);
@@ -86,7 +108,6 @@ function bindInfoWindow(marker, map, infoWindow, html) {
         document.getElementById("city").innerHTML = marker.city;
         document.getElementById("star_rating").style.width = applyRating(marker);
         document.getElementById("reviews").innerHTML = marker.reviewCount;
-        document.getElementById("category").innerHTML = marker.category;
     });
 }
 
@@ -105,21 +126,47 @@ function getCategory() {
 function doNothing() {}
 
 function getRecommendations() {
-    if (window.XMLHttpRequest) {
-        // code for IE7+, Firefox, Chrome, Opera, Safari
-        xmlhttp = new XMLHttpRequest();
-    } else {  // code for IE6, IE5
-        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-    }
+    
+    if(validateFilters()){
+        document.getElementById("tableData").style.display = 'none';
 
-    xmlhttp.onreadystatechange = function () {
-        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-            getXmlMarkers(xmlhttp)
+        if (window.XMLHttpRequest) {
+            // code for IE7+, Firefox, Chrome, Opera, Safari
+            xmlhttp = new XMLHttpRequest();
+        } else {  // code for IE6, IE5
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
         }
+
+        xmlhttp.onreadystatechange = function () {
+            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                getXmlMarkers(xmlhttp);
+            }
+        }
+
+        if (getCategory() !== "Select") {
+            xmlhttp.open("GET", "generate-xml.php?drpdwnStateVal=" + getState() +
+                    "&drpdwnSeasonVal=" + getSeason() + "&drpdwnCategoryVal=" + getCategory(), true);
+        } else {
+            xmlhttp.open("GET", "generate-xml.php?drpdwnStateVal=" + getState() +
+                    "&drpdwnSeasonVal=" + getSeason(), true);
+        }
+        xmlhttp.send();
+    }   
+}
+
+function validateFilters(){
+    if(getState() === "Select" && getSeason() === "Select"){
+        alert("Please select a valid State and Season");
+        return false;
+    } else if(getState() === "Select"){
+        alert("Please select a valid State");
+        return false;
+    } else if(getSeason() === "Select"){
+        alert("Please select a valid Season");
+        return false;
+    } else{
+        return true;
     }
-    xmlhttp.open("GET", "generate-xml.php?drpdwnStateVal=" + getState() + 
-            "&drpdwnSeasonVal=" + getSeason() + "&drpdwnCategoryVal=" + getCategory(), true);
-    xmlhttp.send();
 }
 
 function applyRating(marker) {
@@ -127,8 +174,3 @@ function applyRating(marker) {
     var starVal = (starRating * 20) / 100;
     return (starVal * 100) + "%";
 }
-
-
-
-
-

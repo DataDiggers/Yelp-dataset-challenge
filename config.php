@@ -1,9 +1,10 @@
 <?php
     $username = "root";
-    $password = "*****";
+    $password = "M@sters15intern";
     $database = "yelp-dataset";
     $localhost = "127.0.0.1";
     
-    $stateQuery = "SELECT DISTINCT state FROM businessReviews WHERE state LIKE '__'";
-    $seasonQuery = "SELECT DISTINCT season FROM businessReviews";
+    $initialQuery = "SELECT * FROM businessSeasons where city='Phoenix' limit 5";
+    //$stateQuery = "SELECT DISTINCT state FROM businessSeasons WHERE state LIKE '__' ORDER BY state";
+    $seasonQuery = "SELECT DISTINCT season FROM businessSeasons";
 ?>
