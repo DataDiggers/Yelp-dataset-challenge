@@ -8,11 +8,11 @@ All the input and output files are stored in Amazon S3 Bucket
 **Data Visualization**
 
   1. Apache Zeppelin which runs on EMR cluster
-  2. Tableau connected to EMR cluster
+  2. Tableau connected to EMR cluster/AWS RDS instance
 
 **Web application**
 
-A Web application to analyze the seasonal trends of business (Shows google map and plots the markers of business adresses 
+A Web application to analyze the seasonal trends of business (Shows google map and plots the markers of business 
 which are trending in a selected location for a selected season).
 
 **Filters**:
