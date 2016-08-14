@@ -110,26 +110,6 @@
 
             </div>
 
-            <div id = "tableData">
-                <table>
-                    <tr>
-                        <th>Business Name</th>
-                        <th>City</th>
-                        <th>Reviews</th>
-                        <th>Stars</th>
-                    <tr>
-                        <td id="businessName"></td>
-                        <td id="city"></td>
-                        <td id="reviews"></td>
-                        <td id="starsDiv">
-                            <div class="rating-box">
-                                <div class="rating" id="star_rating"></div>
-                            </div>
-                        </td>
-                    </tr>
-                </table>
-            </div>
-
             <div id="map"></div>
 
         </form>

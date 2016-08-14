@@ -35,35 +35,6 @@ body{
     font-weight: bold;
 }
 
-#tableData {
-    border-collapse: collapse;
-    margin-left: 60px;
-    display: none;
-    border-radius: 5px;
-    float: left;
-}
-
-td, th {
-    border: 1px solid #ddd;
-    padding: 8px;
-    border-radius: 5px;
-}
-
-tr:hover {background-color: #F5F5DC;}
-
-th {
-    padding-top: 12px;
-    padding-bottom: 12px;
-    text-align: left;
-    background-color: #4CAF50;
-    color: white;
-    padding: 8px;
-}
-
-#stars, #reviews{
-    text-align: right;
-}
-
 .rating-box {
     background: url("images/bkg_rating.png") repeat-x;
     font-size: 0;
@@ -72,6 +43,7 @@ th {
     overflow: hidden;
     text-indent: -999em;
     width: 70px;
+    display: inline-block;
 }
 
 .rating-box .rating {

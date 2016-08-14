@@ -4,7 +4,7 @@ var map, markers = [], infoWindow;
 
 function load() {
     map = new google.maps.Map(document.getElementById("map"), {
-        center: new google.maps.LatLng(33.4794817, -112.0736806),
+        center: new google.maps.LatLng(36.778259, -119.417931),
         zoom: 13,
         mapTypeId: 'roadmap'
     });
@@ -58,8 +58,12 @@ function getXmlMarkers(xmlhttp) {
             stars: stars,
             reviewCount: reviews,
             category: category
-
         });
+        
+        var html = "<b>" + name + "</b> <br/>" + address + "<br/>City: " 
+                + city + "<br/>Reviews: " + reviews + "<br/>Stars: " 
+                + "<div class=rating-box><div class=rating id=star_rating>" + applyRating(marker) + "</div></div>";
+        
         bindInfoWindow(marker, map, infoWindow, html);
     }
 }
@@ -103,11 +107,7 @@ function bindInfoWindow(marker, map, infoWindow, html) {
         infoWindow.setContent(html);
         infoWindow.open(map, marker);
 
-        document.getElementById("tableData").style.display = 'block';
-        document.getElementById("businessName").innerHTML = marker.business_name;
-        document.getElementById("city").innerHTML = marker.city;
         document.getElementById("star_rating").style.width = applyRating(marker);
-        document.getElementById("reviews").innerHTML = marker.reviewCount;
     });
 }
 
@@ -128,8 +128,6 @@ function doNothing() {}
 function getRecommendations() {
     
     if(validateFilters()){
-        document.getElementById("tableData").style.display = 'none';
-
         if (window.XMLHttpRequest) {
             // code for IE7+, Firefox, Chrome, Opera, Safari
             xmlhttp = new XMLHttpRequest();
