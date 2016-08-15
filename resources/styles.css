@@ -74,4 +74,6 @@ body#homepage {
    100%{background: url("images/Winter3.jpg");}
 }
 
-
+#stateValidation, #seasonValidation, #stateSeasonValidation{
+    display: none;
+}

@@ -1,6 +1,7 @@
 
 var stateVal, seasonVal, categoryVal, starRating;
 var map, markers = [], infoWindow;
+var hiddenDivStyle;
 
 function load() {
     getMap();
@@ -130,6 +131,10 @@ function getCategory() {
 function doNothing() {}
 
 function getRecommendations() {
+    
+    
+    
+    
     getMap();
     
     if(validateFilters()){
@@ -159,16 +164,29 @@ function getRecommendations() {
 
 function validateFilters(){
     if(getState() === "Select" && getSeason() === "Select"){
-        alert("Please select a valid State and Season");
+        
+        var alert = "Select a valid State and Season!";
+        setHiddenDivStyle(alert);
         return false;
+        
     } else if(getState() === "Select"){
-        alert("Please select a valid State");
+        
+        var alert = "Select a valid State!";
+        setHiddenDivStyle(alert);
         return false;
+        
     } else if(getSeason() === "Select"){
-        alert("Please select a valid Season");
+        
+        var alert = "Select a valid Season!";
+        setHiddenDivStyle(alert);
         return false;
+        
     } else{
+        
+        hiddenDivStyle = document.getElementById('stateSeasonValidation');
+        hiddenDivStyle.style.display = 'none';
         return true;
+        
     }
 }
 
@@ -176,4 +194,11 @@ function applyRating(marker) {
     starRating = marker.stars;
     var starVal = (starRating * 20) / 100;
     return (starVal * 100) + "%";
+}
+
+function setHiddenDivStyle(alert){
+    hiddenDivStyle = document.getElementById('stateSeasonValidation');
+    hiddenDivStyle.style.display = 'block';
+    hiddenDivStyle.style = 'color: red; display: block;font-size:15px;margin-botton:-20px;';
+    hiddenDivStyle.innerHTML = alert;
 }

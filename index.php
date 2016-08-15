@@ -46,7 +46,6 @@
                 
                 echo "</select>"; // Closing of list box
                 
-                // Select all distinct seasons in the businessReviews table
                 $result_seasons = mysql_query($seasonQuery);
                 if (!$result_seasons) {
                     die('Invalid query: ' . mysql_error());
@@ -93,7 +92,7 @@
                 ?>
 
                 <input type="button" name="recommend" value="Show Trends" id="btnRecommend" 
-                       onclick="getRecommendations()"/>
+                       onclick="getRecommendations()"/><br><br><span id=stateSeasonValidation></span>
 
             </div>
             <div id="map"></div>
