@@ -31,9 +31,9 @@
                     businessCategories bc JOIN businessSeasons bs
                     ON bc.business_id = bs.business_id 
                 WHERE bc.state='".$state."' AND season='".$season."' 
-                AND bc.categories LIKE '%".$category."%' LIMIT 100";
+                AND bc.categories LIKE '%".$category."%' LIMIT 200";
     } else {
-        $query = "SELECT * FROM businessSeasons where state= '".$state."' AND season='".$season."' LIMIT 100";
+        $query = "SELECT * FROM businessSeasons where state= '".$state."' AND season='".$season."' LIMIT 200";
     }
     
     $result = mysql_query($query);

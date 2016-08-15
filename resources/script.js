@@ -3,17 +3,21 @@ var stateVal, seasonVal, categoryVal, starRating;
 var map, markers = [], infoWindow;
 
 function load() {
+    getMap();
+    
+    //Get data from xml file
+    downloadUrl("generate-xml.php", function (data) {
+        getXmlMarkers(data);
+    });
+}
+
+function getMap(){
     map = new google.maps.Map(document.getElementById("map"), {
         center: new google.maps.LatLng(36.778259, -119.417931),
         zoom: 13,
         mapTypeId: 'roadmap'
     });
     infoWindow = new google.maps.InfoWindow;
-
-    // Change this depending on the name of your PHP file
-    downloadUrl("generate-xml.php", function (data) {
-        getXmlMarkers(data);
-    });
 }
 
 function downloadUrl(url, callback) {
@@ -61,7 +65,7 @@ function getXmlMarkers(xmlhttp) {
         });
         
         var html = "<b>" + name + "</b> <br/>" + address + "<br/>City: " 
-                + city + "<br/>Reviews: " + reviews + "<br/>Stars: " 
+                + city + "<br/>Reviews: <b>" + reviews + "</b><br/>Stars: " 
                 + "<div class=rating-box><div class=rating id=star_rating>" + applyRating(marker) + "</div></div>";
         
         bindInfoWindow(marker, map, infoWindow, html);
@@ -126,6 +130,7 @@ function getCategory() {
 function doNothing() {}
 
 function getRecommendations() {
+    getMap();
     
     if(validateFilters()){
         if (window.XMLHttpRequest) {

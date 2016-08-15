@@ -29,13 +29,6 @@
 
                 echo "<h4>Seasonal Trends </h4>"; // Header
                 
-                //Select all distinct states in the businessReviews table
-                /*$result_states = mysql_query($stateQuery);
-                if (!$result_states) {
-                    die('Invalid query: ' . mysql_error());
-                }*/
-                
-                
                 echo "<label>Location </label><select id=stateValues "
                 . "name=drpdwnStateVal onchange=getState()>"; // list box select command
 
@@ -53,18 +46,13 @@
                 
                 echo "</select>"; // Closing of list box
                 
-                /*while ($row = mysql_fetch_row($result_states)) {//Array or records stored in $row
-                    echo "<option value=$row[0]>$row[0]</option>";
-                }*/
-
-                
                 // Select all distinct seasons in the businessReviews table
                 $result_seasons = mysql_query($seasonQuery);
                 if (!$result_seasons) {
                     die('Invalid query: ' . mysql_error());
                 }
 
-                echo "<br><br><label>Season: </label><select id=seasonValues "
+                echo "<br><br><label>Season </label><select id=seasonValues "
                 . "name=drpdwnSeasonVal onchange=getSeason()>"; // list box select command
 
                 echo "<option value=Select>Select</option>";
@@ -73,10 +61,9 @@
                 }
                 echo "</select><br><br>"; // Closing of list box
 
-                echo "<label>Category: </label><select id=categoryValues "
+                echo "<label>Category </label><select id=categoryValues "
                 . "name=drpdwnCategoryVal onchange=getCategory()>"; // list box select command
 
-                
                 echo "<option value=Select>Select</option>";
                 
                 echo "<option value=Automotive>Automotive</option>";
@@ -109,7 +96,6 @@
                        onclick="getRecommendations()"/>
 
             </div>
-
             <div id="map"></div>
 
         </form>
