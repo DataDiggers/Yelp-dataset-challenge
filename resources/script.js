@@ -65,8 +65,7 @@ function getXmlMarkers(xmlhttp) {
             category: category
         });
         
-        var html = "<b>" + name + "</b> <br/>" + address + "<br/>City: " 
-                + city + "<br/>Reviews: <b>" + reviews + "</b><br/>Stars: " 
+        var html = "<b>" + name + "</b> <br/>" + address + "<br/>Reviews: <b>" + reviews + "</b><br/>Stars: " 
                 + "<div class=rating-box><div class=rating id=star_rating>" + applyRating(marker) + "</div></div>";
         
         bindInfoWindow(marker, map, infoWindow, html);

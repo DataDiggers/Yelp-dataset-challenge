@@ -8,9 +8,8 @@ body{
 }
 
 #map{
-    top: 10px;
-    width: 900px;
-    height: 450px;
+    width: 1000px;
+    height: 600px;
     float: right;
 }
 
@@ -70,8 +69,8 @@ body#homepage {
    0%{background: url("images/four_seasons.jpg"); }
    25%{background: url("images/Spring.jpg"); }
    50%{background: url("images/Summer2.jpg");}
-   75%{background: url("images/fall1.jpg");}
-   100%{background: url("images/Winter3.jpg");}
+   75%{background: url("images/fall2.jpg");}
+   100%{background: url("images/Winter1.jpg");}
 }
 
 #stateValidation, #seasonValidation, #stateSeasonValidation{

@@ -11,7 +11,7 @@
         <script type="text/javascript" src="resources/script.js"></script>
     </head>
 
-    <body onload="load()">
+    <body onload="load()" id="bgAnimation">
         <form>
             <div id="filters">
 
@@ -29,7 +29,7 @@
 
                 echo "<h4>Seasonal Trends </h4>"; // Header
                 
-                echo "<label>Location </label><select id=stateValues "
+                echo "<label>*Location </label><select id=stateValues "
                 . "name=drpdwnStateVal onchange=getState()>"; // list box select command
 
                 echo "<option value=Select>Select</option>";
@@ -51,7 +51,7 @@
                     die('Invalid query: ' . mysql_error());
                 }
 
-                echo "<br><br><label>Season </label><select id=seasonValues "
+                echo "<br><br><label>*Season </label><select id=seasonValues "
                 . "name=drpdwnSeasonVal onchange=getSeason()>"; // list box select command
 
                 echo "<option value=Select>Select</option>";
@@ -60,7 +60,7 @@
                 }
                 echo "</select><br><br>"; // Closing of list box
 
-                echo "<label>Category </label><select id=categoryValues "
+                echo "<label> Category </label><select id=categoryValues "
                 . "name=drpdwnCategoryVal onchange=getCategory()>"; // list box select command
 
                 echo "<option value=Select>Select</option>";
