@@ -32,6 +32,7 @@ body{
     display: inline-block;
     font-size: 15px;
     font-weight: bold;
+    font-family: "Trebuchet MS";
 }
 
 .rating-box {
@@ -53,24 +54,18 @@ body{
 }
 
 #bgAnimation {
-   background: url("images/four_seasons.jpg");
+   background: url("images/fresh-spring.jpg");
    background-repeat:no-repeat;
    -webkit-animation: mymove 30s infinite; /* Chrome, Safari, Opera */
    -webkit-backface-visibility: hidden;
    -webkit-transform: scale(1);
 }
 
-body#homepage { 
-    background: url("images/four_seasons_by_nalmes.jpg"); 
-    background-repeat:no-repeat;
-} 
-
 @-webkit-keyframes mymove {
-   0%{background: url("images/four_seasons.jpg"); }
-   25%{background: url("images/Spring.jpg"); }
+   0%{background: url("images/NewSpring.jpg"); }
+   25%{background: url("images/fresh-spring.jpg"); }
    50%{background: url("images/Summer2.jpg");}
-   75%{background: url("images/fall2.jpg");}
-   100%{background: url("images/Winter1.jpg");}
+   75%{background: url("images/Winter3.jpg");}
 }
 
 #stateValidation, #seasonValidation, #stateSeasonValidation{

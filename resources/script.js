@@ -130,10 +130,6 @@ function getCategory() {
 function doNothing() {}
 
 function getRecommendations() {
-    
-    
-    
-    
     getMap();
     
     if(validateFilters()){
@@ -198,6 +194,6 @@ function applyRating(marker) {
 function setHiddenDivStyle(alert){
     hiddenDivStyle = document.getElementById('stateSeasonValidation');
     hiddenDivStyle.style.display = 'block';
-    hiddenDivStyle.style = 'color: red; display: block;font-size:15px;margin-botton:-20px;';
+    hiddenDivStyle.style = 'color: red; display: block;font-size:20px;margin-botton:-20px;font-weight:bold';
     hiddenDivStyle.innerHTML = alert;
 }
