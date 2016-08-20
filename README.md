@@ -13,13 +13,19 @@ All the input and output files are stored in Amazon S3 Bucket
 **Web application**
 
 A Web application to analyze the seasonal trends of business (Shows google map and plots the markers of business 
-which are trending in a selected location for a selected season).
+which are trending in a selected location for a selected season). Also the web application is hosted on AWS Elastic Bean Stalk
 
 **Filters**:
   1. Location
   2. Season
-  3. Category - Done with adding category filter which allows user to further drill-down based on a category
+  3. Category 
 
 **Future enhancements:**
-  1. Deploying the web application on AWS
+
+1. Recommend businesses 
+2. Add review text 
+3. Show analysis on Charts
+4. Ability to Comment 
+5. Is the info useful
+
 
