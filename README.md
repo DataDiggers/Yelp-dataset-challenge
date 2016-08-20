@@ -21,10 +21,11 @@ which are trending in a selected location for a selected season). Also the web a
   3. Category 
 
 **Future enhancements:**
-a. Recommend businesses 
-b. Add review text 
-c. Show analysis on Charts
-d. Ability to Comment 
-e. Is the info useful
+
+1. Recommend businesses 
+2. Add review text 
+3. Show analysis on Charts
+4. Ability to Comment 
+5. Is the info useful
 
 
