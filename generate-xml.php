@@ -21,7 +21,7 @@
       die ('Can\'t use db : ' . mysql_error());
     }
 
-    if($category != "Select"){
+    /*if($category != "Select"){
     // Select all the rows from table satisfying the given condition
     $query = "SELECT bs.business_id, bs.name, season, 
                     bs.latitude, bs.longitude, bs.state, 
@@ -34,9 +34,9 @@
                 AND bc.categories LIKE '%".$category."%' LIMIT 200";
     } else {
         $query = "SELECT * FROM businessSeasons where state= '".$state."' AND season='".$season."' LIMIT 200";
-    }
+    }*/
     
-    //$query = "SELECT * FROM businessSeasons where state= 'PA' AND season='Summer' LIMIT 200";
+    $query = "SELECT * FROM businessSeasons where state= 'PA' AND season='Summer' LIMIT 200";
     
     $result = mysql_query($query);
     if (!$result) {
