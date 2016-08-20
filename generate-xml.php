@@ -36,6 +36,8 @@
         $query = "SELECT * FROM businessSeasons where state= '".$state."' AND season='".$season."' LIMIT 200";
     }
     
+    //$query = "SELECT * FROM businessSeasons where state= 'PA' AND season='Summer' LIMIT 200";
+    
     $result = mysql_query($query);
     if (!$result) {
       die('Invalid query: ' . mysql_error());
