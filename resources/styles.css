@@ -1,0 +1,73 @@
+/* 
+    Created on : Jul 18, 2016, 5:46:39 PM
+    Author     : Priyanka Bolisetty
+*/
+
+body{
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+}
+
+#map{
+    width: 1000px;
+    height: 600px;
+    float: right;
+}
+
+#filters{
+    float: left;
+    width: 225px;
+    height: 500px;
+    font-size: 20px;
+    margin-left: 15px;
+}
+
+#btnRecommend{
+    margin-left: 25px;
+    background-color: lightslategray;
+    border: antiquewhite;
+    color: white;
+    padding: 10px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 15px;
+    font-weight: bold;
+    font-family: "Trebuchet MS";
+}
+
+.rating-box {
+    background: url("images/bkg_rating.png") repeat-x;
+    font-size: 0;
+    height: 13px;
+    line-height: 0;
+    overflow: hidden;
+    text-indent: -999em;
+    width: 70px;
+    display: inline-block;
+}
+
+.rating-box .rating {
+    background: url("images/bkg_rating.png") repeat-x;
+    background-position: 0 100%;
+    float: left;
+    height: 13px;
+}
+
+#bgAnimation {
+   background: url("images/fresh-spring.jpg");
+   background-repeat:no-repeat;
+   -webkit-animation: mymove 30s infinite; /* Chrome, Safari, Opera */
+   -webkit-backface-visibility: hidden;
+   -webkit-transform: scale(1);
+}
+
+@-webkit-keyframes mymove {
+   0%{background: url("images/NewSpring.jpg"); }
+   25%{background: url("images/fresh-spring.jpg"); }
+   50%{background: url("images/Summer2.jpg");}
+   75%{background: url("images/Winter3.jpg");}
+}
+
+#stateValidation, #seasonValidation, #stateSeasonValidation{
+    display: none;
+}
